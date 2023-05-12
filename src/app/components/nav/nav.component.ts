@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',  // Padrão de nomenclatura
@@ -9,10 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   // Contrutor (Quando for construído)
-  constructor() { }
+  constructor(private router: Router) { }
 
   // Na inicialização do componente.
   ngOnInit(): void {
+    this.router.navigate(['home'])
   }
 
 }
