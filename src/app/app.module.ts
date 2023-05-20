@@ -30,6 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 // Todo novo componente deve ser declarado aqui.
 @NgModule({
@@ -63,8 +64,11 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
-
-    })
+      timeOut: 4000,
+      closeButton: true,
+      progressBar: true
+    }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
