@@ -1,6 +1,8 @@
+// Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',  // Padrão de nomenclatura
@@ -10,9 +12,10 @@ import { AuthService } from 'src/app/services/auth.service';
 
 export class NavComponent implements OnInit {
 
-  // Contrutor (Quando for construído)
+  // Construtor
   constructor(private router: Router,
-              private authService: AuthService
+              private authService: AuthService,
+              private toast: ToastrService,
              ) { }
 
   // Na inicialização do componente.
@@ -24,6 +27,7 @@ export class NavComponent implements OnInit {
   logout(){
     this.router.navigate(['login']);
     this.authService.logout();
+    this.toast.info('Logout realizado com sucesso!', 'Logout');
   };
 
 }
