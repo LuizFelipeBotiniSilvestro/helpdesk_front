@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tecnico } from 'src/app/models/tecnico';
+import { TecnicoService } from 'src/app/services/tecnico.service';
 
 @Component({
   selector: 'app-tecnico-list',
@@ -10,32 +11,37 @@ import { Tecnico } from 'src/app/models/tecnico';
 })
 export class TecnicoListComponent implements OnInit {
 
-    
-  constructor() { }
-  
-  ELEMENT_DATA: Tecnico[] = [
-    {
-      id: 1,
-      nome: 'Luiz Felipe',
-      cpf: '117.655.499-90',
-      email: 'email@email.com',
-      senha: '1234',
-      perfis: ['0'],
-      dataCriacao: '18/05/2023'
-    }
-  ];
-
+  ELEMENT_DATA: Tecnico[] = [];
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', "acoes"];
   dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA); // this. "Fazendo referência"
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  constructor(
+    private service: TecnicoService
+  ) { }
+
   ngOnInit(): void {
+    this.findAll();
   }
 
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  findAll() {
+    this.service.findAll().subscribe(resposta => {
+      this.ELEMENT_DATA = resposta;
+      this.dataSource = new MatTableDataSource<Tecnico>(resposta); // this. "Fazendo referência"
+      this.dataSource.paginator = this.paginator;
+    });
+  }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  // Método de busca.
+  applyFilter(event: Event) {
+
+    // Cria uma const e pega o valor que está sendo digitado.
+    const filterValue = (event.target as HTMLInputElement).value;
+
+    // Filtro
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
