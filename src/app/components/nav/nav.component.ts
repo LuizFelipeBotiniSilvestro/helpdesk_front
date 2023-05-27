@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
               private toast: ToastrService,
              ) { }
 
-  // Na inicialização do componente.
+  // Quando iniciar o sistema vai para página home.
   ngOnInit(): void {
     this.router.navigate(['home'])
   }
