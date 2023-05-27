@@ -10,7 +10,7 @@
                 <i class="material-icons">account_circle</i>
                     Técnicos
             </a>
-            <a mat-list-item routerLink="/">
+            <a mat-list-item routerLink="clientes">
                 <i class="material-icons">person</i>
                     Clientes
             </a>
@@ -26,10 +26,14 @@
     </mat-drawer>
   
     <div class="sidenav-content">
-        <app-header></app-header>
+       
       <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
+
+      <!-- Componente header -->
+      <app-header></app-header>
+
       <router-outlet></router-outlet>
     </div>
   
