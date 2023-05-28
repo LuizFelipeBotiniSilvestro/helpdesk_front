@@ -14,6 +14,11 @@
     border-radius: 1rem;
 }
 
+title {
+    width: 100%;
+    text-align: center; 
+}
+
 .h1 {
     width: 100%;
     text-align: center;
@@ -31,5 +36,9 @@ img {
 
 button {
     margin-top: 1.5rem;
+}
+
+mat-icon {
+    opacity: .6;
 }
 
