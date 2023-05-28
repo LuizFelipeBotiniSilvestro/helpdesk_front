@@ -14,5 +14,10 @@ export class ChamadoService {
   // Método que faz requisição HTTP para o backend e lista todos os chamados.
   findAll(): Observable<Chamado[]> {
     return this.http.get<Chamado[]>(`${API_CONFIG.baseUrl}/chamados`);
-  }
+  };
+
+  create(chamado: Chamado): Observable<Chamado> {
+    return this.http.post<Chamado>(`${API_CONFIG.baseUrl}/chamados`, chamado);
+  };
+
 }
