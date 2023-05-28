@@ -9,7 +9,6 @@ import { ChamadoService } from 'src/app/services/chamado.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { TecnicoService } from 'src/app/services/tecnico.service';
 
-
 @Component({
   selector: 'app-chamado-update',
   templateUrl: './chamado-update.component.html',
