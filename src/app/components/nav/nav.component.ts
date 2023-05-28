@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
 
   // Quando iniciar o sistema vai para página home.
   ngOnInit(): void {
-    this.router.navigate(['chamados/update/1'])
+    this.router.navigate(['chamados/read/1'])
   }
 
   // Função de logout no sistema.
